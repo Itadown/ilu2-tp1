@@ -28,10 +28,10 @@ public class Druide {
 		System.out.println(prendreParole() + "« " + texte + "»");
 	}
 	
-	public int preparerPotion(int min, int max)
+	public int preparerPotion()
 	{
 		Random objet = new Random();
-		int nb = objet.nextInt(min, max);
+		int nb = objet.nextInt(effetPotionMin, effetPotionMax);
 		
 		return nb;
 	}
@@ -41,11 +41,11 @@ public class Druide {
 		return "Le druide " + nom + " : ";
 	}
 	
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		
 		Druide druide = new Druide("Druide", 5, 10);
 		
-		if (preparerPotion(druide.effetPotionMin, druide.effetPotionMax) > 7)
+		if (druide.preparerPotion() > 7)
 		{
 			druide.parler("J'ai préparé une super potion de force");
 		}
