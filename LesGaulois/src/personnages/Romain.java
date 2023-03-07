@@ -28,7 +28,7 @@ public class Romain {
 	
 	public void recevoirCoup(int forceCoup) 
 	{
-		assert force > 0;
+		assert force > 0 : "force < 0";
 		int force_debut = force;
 		force -= forceCoup;
 		if (force > 0) 
@@ -39,7 +39,7 @@ public class Romain {
 		{
 			parler("J'abandonne...");
 		}
-		assert force < force_debut;
+		assert force <= force_debut : "force >= force_debut";
 	}
 	
 	public static void main(String[] args) 
