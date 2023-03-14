@@ -36,6 +36,18 @@ public class Druide {
 		return nb;
 	}
 	
+	public void booster(Gaulois gaulois)
+	{
+		if (gaulois.getNom() == "Obélix")
+		{
+			parler("Non Obélix !... Tu n'auras pas de potion magique !");
+		}
+		else
+		{
+			gaulois.boirePotion(forcePotion);
+		}
+	}
+	
 	private String prendreParole() 
 	{
 		return "Le druide " + nom + " : ";

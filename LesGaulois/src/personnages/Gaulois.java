@@ -2,8 +2,11 @@ package personnages;
 
 public class Gaulois {
 	private String nom;
-	private int force;
 	private int effetPotion = 1;
+	
+	private int force;
+	private int nbTrophees;
+	private Trophee [] trophees = new Trophee[100];
 	
 	public Gaulois(String nom, int force) 
 	{
@@ -21,17 +24,60 @@ public class Gaulois {
 		System.out.println(prendreParole() + "« " + texte + "»");
 	}
 	
+//	private String prendreParole() 
+//	{
+//		return "Le gaulois " + nom + " : ";
+//	}
+	
+	public void boirePotion(int effet)
+	{
+		effetPotion = effet;
+		System.out.println("Merci druide, je sens que ma force est " + effet + " fois décuplé !");
+	}
+	
+	
+	
 	private String prendreParole() 
 	{
 		return "Le gaulois " + nom + " : ";
 	}
 	
-	public void frapper(Romain romain) 
+	
+	public void frapper(Romain romain)
 	{
-		System.out.println(nom + " envoie un grand coup dans la mâchoire de "
-		+ romain.getNom());
-		romain.recevoirCoup(force / 3);
+		System.out.println(nom + " envoie un grand coup dans la mâchoire de " + romain.getNom());
+		Equipement [] trophee = romain.recevoirCoup((force / 3) * effetPotion);
+		for (int i = 0; trophee != null && i < trophee.length; i++, nbTrophees++) 
+		{
+			this.trophees[nbTrophees] = trophee[i];
+		}
 	}
+	
+	public void faireUneDonnation(Musee musee)
+	{
+		if (nbTrophees > 0)
+		{
+			System.out.println("Je donne tous mes trophees : ");
+			for (int i = 0; i < nbTrophees; i++)
+			{
+				System.out.println("- " + trophees[nbTrophees]);
+				musee.donnerTrophees(this, trophees[nbTrophees]);
+				nbTrophees -= 1;
+			}
+		}
+		else
+		{
+			System.out.println("Je n'ai pas de trophées à donner...");
+		}
+	}
+	
+	
+//	public void frapper(Romain romain) 
+//	{
+//		System.out.println(nom + " envoie un grand coup dans la mâchoire de "
+//		+ romain.getNom());
+//		romain.recevoirCoup(force / 3);
+//	}
 	
 	@Override
 	public String toString() 
