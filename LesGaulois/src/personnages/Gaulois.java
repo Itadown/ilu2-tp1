@@ -63,7 +63,7 @@ public class Gaulois {
 			{
 				System.out.println("- " + trophees[nbTrophees-1]);
 				
-				troph.setTrophee(this, trophees[nbTrophees-1]);
+				troph = new Trophee(this, trophees[nbTrophees-1]);
 				
 				musee.donnerTrophees(this, troph);
 				nbTrophees -= 1;
