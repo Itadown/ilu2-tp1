@@ -6,7 +6,7 @@ public class Gaulois {
 	
 	private int force;
 	private int nbTrophees;
-	private Trophee [] trophees = new Trophee[100];
+	private Equipement [] trophees = new equipement[100];
 	
 	public Gaulois(String nom, int force) 
 	{
@@ -55,13 +55,17 @@ public class Gaulois {
 	
 	public void faireUneDonnation(Musee musee)
 	{
+		Trophee troph;
 		if (nbTrophees > 0)
 		{
 			System.out.println("Je donne tous mes trophees : ");
-			for (int i = 0; i < nbTrophees; i++)
+			for (int i = 0; i < nbTrophees; nbTrophees--)
 			{
-				System.out.println("- " + trophees[nbTrophees]);
-				musee.donnerTrophees(this, trophees[nbTrophees]);
+				System.out.println("- " + trophees[nbTrophees-1]);
+				
+				troph.setTrophee(this, trophees[nbTrophees-1]);
+				
+				musee.donnerTrophees(this, troph);
 				nbTrophees -= 1;
 			}
 		}

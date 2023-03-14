@@ -20,5 +20,10 @@ public class Trophee {
 		return gaulois.getNom();
 	}
 	
+	public void setTrophee(Gaulois gaulois, Equipement equipement)
+	{
+		this.gaulois = gaulois;
+		this.equipement = equipement;
+	}
 	
 }
