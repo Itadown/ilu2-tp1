@@ -126,13 +126,13 @@ public class Village {
 			Etal[] produitEtal;
 			int nbEtal = 0;
 			for (int i = 0; i < etals.length; i++) {
-				if (etals[i].contientProduit(produit)) {
+				if (etals[i].isEtalOccupe() && etals[i].contientProduit(produit)) {
 					nbEtal++;
 				}
 			}
 			produitEtal = new Etal[nbEtal];
 			for (int i = 0, j = 0; i < etals.length; i++) {
-				if (etals[i].contientProduit(produit)) {
+				if (etals[i].isEtalOccupe() && etals[i].contientProduit(produit)) {
 					produitEtal[j] = etals[i];
 					j++;
 				}
