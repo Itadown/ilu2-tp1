@@ -106,6 +106,9 @@ public class Village {
 
 		private Marche(int nbEtal) {
 			etals = new Etal[nbEtal];
+			for (int i = 0; i < nbEtal; i++) {
+		        etals[i] = new Etal();
+			}
 		}
 
 		private void utiliserEtal(int indiceEtal, Gaulois vendeur, String produit, int nbProduit) {
