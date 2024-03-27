@@ -15,13 +15,34 @@ public class ScenarioCasDegrade {
 		
 		etal.occuperEtal(vendeur, "fleur", 15);
 		
-		etal.acheterProduit(2, null);
-		System.out.println("acheterProduit acheteur null fini\n");
+		try {
+			etal.acheterProduit(2, null);
+			System.out.println("acheterProduit acheteur null fini\n");
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		}
 		
+		try {	
+			etal.acheterProduit(-1, acheteur);
+			System.out.println("acheterProduit etal occupe fini\n");
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		}
 		
-		
-		etal.acheterProduit(0, acheteur);
-		System.out.println("acheterProduit etal occupe fini\n");
+		try {
+			etal.libererEtal();
+			etal.acheterProduit(2, acheteur);
+			System.out.println("acheterProduit etal occupe fini\n");
+			
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		}
 		
 		
 		System.out.println("Fin du test");
